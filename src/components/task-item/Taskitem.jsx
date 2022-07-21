@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import { propTypes } from "react-bootstrap/esm/Image";
 
 Taskitem.propTypes = {
   taskName: PropTypes.string,
