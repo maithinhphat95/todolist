@@ -1,0 +1,22 @@
+.task-item {
+  width: 250px;
+  margin: 0 auto;
+  border: 2px solid blue;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: white;
+}
+.task-description {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid blue;
+}
+.new {
+  color: green;
+}
+.doing {
+  color: orange;
+}
+.done {
+  color: blue;
+}
