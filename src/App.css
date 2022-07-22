@@ -39,12 +39,8 @@
     transform: rotate(360deg);
   }
 }
-.main {
-  background-color: #748dce;
-  width: 1200px;
-  margin: 0 auto;
-  padding: 20px 60px;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  gap: 20px;
+
+.container {
+background-color: #748dce;
+min-height: 100vh;
 }

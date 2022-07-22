@@ -1,14 +1,9 @@
-import Taskitem from "./components/task-item/Taskitem";
 import "./App.css";
+import Tasklist from "./components/task-list/Tasklist";
 function App() {
   return (
-    <div className="main">
-      <Taskitem itemStatus="new" />
-      <Taskitem taskName="Task 2" />
-      <Taskitem taskName="Task 3" />
-      <Taskitem taskName="Task 3" />
-      <Taskitem taskName="Task 3" />
-      <Taskitem taskName="Task 3" />
+    <div className="container">
+      <Tasklist />
     </div>
   );
 }
