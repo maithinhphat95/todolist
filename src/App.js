@@ -1,5 +1,5 @@
 import "./App.css";
-import Tasklist from "./components/task-list/Tasklist";
+import Tasklist from "./components/TaskList/Tasklist";
 function App() {
   return (
     <div className="container">
