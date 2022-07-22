@@ -1,0 +1,10 @@
+.search-form {
+  display: flex;
+  gap: 10px;
+}
+.search-form {
+  height: 100%;
+}
+.form-input {
+  width: 400px;
+}

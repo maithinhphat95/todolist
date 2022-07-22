@@ -41,6 +41,7 @@
 }
 
 .container {
-background-color: #748dce;
-min-height: 100vh;
+  background-color: #748dce;
+  min-height: 100vh;
+  margin-top: 60px;
 }
