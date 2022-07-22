@@ -15,7 +15,6 @@ function Tasklist(props) {
             <Taskitem taskName="Night - Study" taskAuthor="Phat" taskDescription="Review the slide, do the Excersice" />
             <Taskitem taskName="Late-night - Sleep" taskAuthor="Phat" taskDescription="Have a nice dream" />
             <Taskitem />
-            <Taskitem />
 
         </div>
     );

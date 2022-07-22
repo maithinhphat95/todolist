@@ -1,9 +1,10 @@
 .main {
   background-color: #748dce;
-  width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 40px 60px;
-  display: grid;
-  grid-template-columns: auto auto auto auto;
+  display: flex;
+  flex-wrap: wrap;    
+  justify-content: flex-start;
   gap: 20px;
 }
