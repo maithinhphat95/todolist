@@ -1,0 +1,44 @@
+.modal-container {
+  background-color: rgba(190, 199, 199, 0.5);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  left: 0;
+  /* display: none; */
+}
+.modal-form {
+  position: fixed;
+  top: 200px;
+  width: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: orange;
+  padding: 20px;
+}
+.modal-form h1 {
+  margin: 0 0 10px 0;
+}
+.modal-item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.modal-item input,
+.modal-item textarea,
+.modal-input {
+  width: 250px;
+}
+.modal-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+.modal-action button {
+  width: 20%;
+  height: 30px;
+}

@@ -1,14 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./taskCreatBtn.css";
+import CreatTaskModal from "../CreatTaskModal/CreatTaskModal";
+import { useState } from "react";
 TaskCreatBtn.propTypes = {};
 
 function TaskCreatBtn(props) {
-  function creatTaskModal() {}
   return (
-    <button className="creatBtn" onClick={creatTaskModal}>
-      Creat New Task
-    </button>
+    <div id="creatTaskBox">
+      <button className="creatBtn" onClick={() => {}}>
+        Creat New Task
+      </button>
+      <CreatTaskModal />
+    </div>
   );
 }
 
