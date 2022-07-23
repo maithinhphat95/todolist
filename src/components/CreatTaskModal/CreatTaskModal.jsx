@@ -12,7 +12,7 @@ function CreatTaskModal(props) {
     console.log(show);
   }
   return (
-    <div className="modal-container" style={{ display: { show } }}>
+    <div className="modal-container" style={{ display: show }}>
       {/* Form input new Task */}
       <form className="modal-form">
         <h1>Creat a new Task</h1>
