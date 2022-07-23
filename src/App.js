@@ -1,11 +1,13 @@
 import "./App.css";
 import Header from "./components/Header/Header";
-import Tasklist from "./components/TaskList/Tasklist";
+import MainContent from "./components/MainContent/MainContent";
+import SideBar from "./components/SideBar/SideBar";
 function App() {
   return (
     <div className="container">
       <Header />
-      <Tasklist />
+      <SideBar />
+      <MainContent />
     </div>
   );
 }

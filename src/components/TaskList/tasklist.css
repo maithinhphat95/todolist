@@ -1,10 +1,10 @@
-.main {
-  background-color: #748dce;
-  max-width: 1200px;
+.task-list {
+  /* background-color: #748dce; */
   margin: 0 auto;
-  padding: 40px 60px;
+  padding: 20px;
   display: flex;
-  flex-wrap: wrap;    
+  flex-wrap: wrap;
   justify-content: flex-start;
   gap: 20px;
+  align-content: flex-start;
 }

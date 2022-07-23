@@ -1,11 +1,11 @@
 .header-container {
-  background-color: #143790;
-  height: 60px;
+  background-color: #3a57a2;
+  height: 64px;
   position: fixed;
   top: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4px;
+  padding: 8px;
 }

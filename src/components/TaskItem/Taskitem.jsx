@@ -6,19 +6,19 @@ Taskitem.propTypes = {
   taskName: PropTypes.string,
   taskAuthor: PropTypes.string,
   taskStatus: PropTypes.string,
-  taskDescription: PropTypes.string
+  taskDescription: PropTypes.string,
 };
 Taskitem.defaultProps = {
   taskName: "Task Name",
   taskAuthor: "Author",
   taskStatus: "New",
-  taskDescription: "Get up, brush teeths, change the uniform and go for work"
+  taskDescription: "Get up, brush teeths, change the uniform and go for work",
 };
 function Taskitem(props) {
   const { taskName, taskAuthor, taskStatus, taskDescription } = props;
   const [btnStatus, setBtnStatus] = useState("Start");
   const [status, setStatus] = useState(taskStatus);
-  const [statusColor, setColor] = useState("#14ae5c")
+  const [statusColor, setColor] = useState("#14ae5c");
   function changeStatus() {
     if (status === "New") {
       setStatus("Doing");
@@ -39,14 +39,16 @@ function Taskitem(props) {
       <div>
         <b>Title: {taskName}</b>
         <p>Creator: {taskAuthor}</p>
-        <b style={{ color: statusColor }} >Status: {status}</b>
+        <b style={{ color: statusColor }}>Status: {status}</b>
         <div className="task-description">
           <b>Description:</b>
           <p>{taskDescription}</p>
         </div>
       </div>
-      <button className="status-btn" onClick={changeStatus} >{btnStatus}</button>
-    </div >
+      <button className="status-btn" onClick={changeStatus}>
+        {btnStatus}
+      </button>
+    </div>
   );
 }
 export default Taskitem;

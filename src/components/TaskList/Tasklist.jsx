@@ -1,11 +1,11 @@
 import React from "react";
 import Taskitem from "../TaskItem/Taskitem";
 import "./tasklist.css";
-Tasklist.propTypes = {};
+TaskList.propTypes = {};
 
-function Tasklist(props) {
+function TaskList(props) {
   return (
-    <div className="main">
+    <div className="task-list">
       <Taskitem taskName="Morning - Go to Work" taskAuthor="Phat" />
       <Taskitem
         taskName="Mid-day - Working"
@@ -33,8 +33,9 @@ function Tasklist(props) {
         taskDescription="Have a nice dream"
       />
       <Taskitem />
+      <Taskitem />
     </div>
   );
 }
 
-export default Tasklist;
+export default TaskList;

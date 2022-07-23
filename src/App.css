@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+html {
+  height: 100%;
+}
 .App {
   text-align: center;
 }
@@ -39,9 +42,6 @@
     transform: rotate(360deg);
   }
 }
-
 .container {
-  background-color: #748dce;
-  min-height: 100vh;
-  margin-top: 60px;
+  height: 100%;
 }
