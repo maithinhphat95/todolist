@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import SideBarItem from "../SideBarItem/SideBarItem";
+import SideBarItem from "../../components/SideBarItem/SideBarItem";
 import "./sideBar.css";
 SideBar.propTypes = {};
 

@@ -1,15 +1,14 @@
 import "./App.css";
-import Header from "./components/Header/Header";
-import MainContent from "./components/MainContent/MainContent";
-import SideBar from "./components/SideBar/SideBar";
-// import CreatTaskModal from "./components/CreatTaskModal/CreatTaskModal";
+import Header from "./layout/Header/Header";
+import MainContent from "./layout/MainContent/MainContent";
+import SideBar from "./layout/SideBar/SideBar";
+// import CreatTaskModal from "./layout/CreatTaskModal/CreatTaskModal";
 function App() {
   return (
     <div className="container">
       <Header />
       <SideBar />
       <MainContent />
-      {/* <CreatTaskModal /> */}
     </div>
   );
 }

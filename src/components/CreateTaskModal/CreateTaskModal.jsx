@@ -1,18 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./creatTaskModal.css";
+import "./createTaskModal.css";
 import { useState } from "react";
-CreatTaskModal.propTypes = {};
+CreateTaskModal.propTypes = {};
 
-function CreatTaskModal(props) {
-  const [show, setShow] = useState("block");
-  function closeModal(e) {
-    e.preventDefault();
-    setShow("none");
-    console.log(show);
-  }
+function CreateTaskModal(props) {
+  const { displayResult } = props;
+  let display = "none";
+  if (displayResult) {
+    display = "block";
+  } else display = "none";
+  const [show, setShow] = useState(display);
+
+  // const [close, setClose] = useState(display);
   return (
-    <div className="modal-container" style={{ display: show }}>
+    <div
+      id="modal-container"
+      className="modal-container"
+      style={{ display: show }}
+    >
       {/* Form input new Task */}
       <form className="modal-form">
         <h1>Creat a new Task</h1>
@@ -48,7 +54,13 @@ function CreatTaskModal(props) {
         <div className="modal-action">
           <button type="button">Add</button>
           <button type="reset">Clear</button>
-          <button type="button" onClick={closeModal}>
+          <button
+            type="button"
+            onClick={() => {
+              // document.getElementById("modal-container").style.display = "none";
+              setShow("none");
+            }}
+          >
             Close
           </button>
         </div>
@@ -57,4 +69,4 @@ function CreatTaskModal(props) {
   );
 }
 
-export default CreatTaskModal;
+export default CreateTaskModal;

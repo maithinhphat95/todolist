@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TaskList from "../TaskList/TaskList";
-import Panigation from "../Panigation/Panigation";
+import TaskList from "../../components/TaskList/TaskList";
+import Panigation from "../../components/Panigation/Panigation";
 import "./mainContent.css";
 MainContent.propTypes = {};
 

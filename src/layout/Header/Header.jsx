@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TaskCreatBtn from "../TaskCreatBtn/TaskCreatBtn";
-import SearchForm from "../SearchForm/SearchForm";
+import TaskCreatBtn from "../../components/TaskCreatBtn/TaskCreatBtn";
+import SearchForm from "../../components/SearchForm/SearchForm";
 import "./header.css";
 
 Header.propTypes = {};

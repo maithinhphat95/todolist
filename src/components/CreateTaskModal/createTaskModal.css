@@ -6,7 +6,6 @@
   top: 0;
   z-index: 1;
   left: 0;
-  /* display: none; */
 }
 .modal-form {
   position: fixed;
@@ -41,4 +40,7 @@
 .modal-action button {
   width: 20%;
   height: 30px;
+}
+.hide-box {
+  display: none;
 }
