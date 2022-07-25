@@ -6,10 +6,7 @@ import { useState } from "react";
 TaskCreatBtn.propTypes = {};
 
 function TaskCreatBtn(props) {
-  let [show, setShow] = useState(false);
-  function showModal() {
-    setShow(!show);
-  }
+  let [show, setShow] = useState(true);
 
   return (
     <div id="creatTaskBox">
@@ -17,10 +14,11 @@ function TaskCreatBtn(props) {
         className="creatBtn"
         type="button"
         value="Creat New Task"
-        onClick={showModal}
+        onClick={() => {
+          setShow(false);
+        }}
       />
-      {show ? <CreatTaskModal displayResult={show} /> : "none"}
-      {/* <CreatTaskModal displayResult={show} /> */}
+      <CreatTaskModal status={show} />
     </div>
   );
 }

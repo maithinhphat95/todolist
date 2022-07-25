@@ -5,19 +5,14 @@ import { useState } from "react";
 CreateTaskModal.propTypes = {};
 
 function CreateTaskModal(props) {
-  const { displayResult } = props;
-  let display = "none";
-  if (displayResult) {
-    display = "block";
-  } else display = "none";
-  const [show, setShow] = useState(display);
+  const [show, setShow] = useState("block");
 
   // const [close, setClose] = useState(display);
   return (
     <div
       id="modal-container"
       className="modal-container"
-      style={{ display: show }}
+      style={{ display: props.status ? "none" : show }}
     >
       {/* Form input new Task */}
       <form className="modal-form">
@@ -55,9 +50,7 @@ function CreateTaskModal(props) {
           <button type="button">Add</button>
           <button type="reset">Clear</button>
           <button
-            type="button"
             onClick={() => {
-              // document.getElementById("modal-container").style.display = "none";
               setShow("none");
             }}
           >
