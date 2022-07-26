@@ -5,20 +5,21 @@ import CreatTaskModal from "../CreateTaskModal/CreateTaskModal";
 import { useState } from "react";
 TaskCreatBtn.propTypes = {};
 
+// Function của Create Task Button
 function TaskCreatBtn(props) {
-  let [show, setShow] = useState(true);
-
+  const [status, setStatus] = useState(false);
   return (
-    <div id="creatTaskBox">
-      <input
-        className="creatBtn"
-        type="button"
-        value="Creat New Task"
+    <div id="createTaskBox">
+      <button
+        className="createBtn"
+        value=""
         onClick={() => {
-          setShow(false);
+          setStatus(true);
         }}
-      />
-      <CreatTaskModal status={show} />
+      >
+        Create New Task
+      </button>
+      <CreatTaskModal display={status} />
     </div>
   );
 }

@@ -4,15 +4,59 @@ import "./createTaskModal.css";
 import { useState } from "react";
 CreateTaskModal.propTypes = {};
 
+// Function của modal
 function CreateTaskModal(props) {
+  const { display } = props;
   const [show, setShow] = useState("block");
+  // Get the array of task list from local storage
+  let taskListArr = localStorage.getItem("taskList")
+    ? JSON.parse(localStorage.getItem("taskList"))
+    : [];
+  //
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [status, setStatus] = useState("");
+  // Constructor function of each task item
+  class TaskItemObject {
+    constructor(title, author, status, descript) {
+      this.title = title;
+      this.author = author;
+      this.status = status;
+      this.descript = descript;
+    }
+  }
 
-  // const [close, setClose] = useState(display);
+  // Function save the object task to the array
+  let saveArr = (obj) => {
+    taskListArr.push(obj);
+    storeArr(taskListArr);
+  };
+  // Function store the array to the localstorage
+  let storeArr = (arr) => {
+    localStorage.setItem("taskList", JSON.stringify(arr));
+  };
+  // Get the input element: Maybe it will not work because the element isn't still created
+  let titleInput = document.getElementById("title-id");
+  let authorInput = document.getElementById("author-id");
+  let statusInput = document.getElementById("status-id");
+  let descriptInput = document.getElementById("status-id");
+  // Function handle the add button
+  let addNewTask = () => {
+    // Create an object from input value
+    let newTask = new TaskItemObject(
+      titleInput.value,
+      authorInput.value,
+      statusInput.value,
+      descriptInput.value
+    );
+    // Save object to array
+    saveArr(newTask);
+  };
   return (
     <div
       id="modal-container"
       className="modal-container"
-      style={{ display: props.status ? "none" : show }}
+      style={{ display: display ? show : "none" }}
     >
       {/* Form input new Task */}
       <form className="modal-form">
@@ -32,9 +76,7 @@ function CreateTaskModal(props) {
           <label htmlFor="status-id">Status:</label>{" "}
           <div className="modal-input">
             <select name="task-status" id="status-id">
-              <option value={"New"} selected>
-                New
-              </option>
+              <option value={"New"}>New</option>
               <option value={"Doing"}>Doing</option>
               <option value={"Done"}>Done</option>
             </select>
@@ -47,10 +89,13 @@ function CreateTaskModal(props) {
         </div>
         {/* Button submit */}
         <div className="modal-action">
-          <button type="button">Add</button>
+          <button type="button" onClick={addNewTask}>
+            Add
+          </button>
           <button type="reset">Clear</button>
           <button
-            onClick={() => {
+            onClick={(e) => {
+              // e.preventDefault();
               setShow("none");
             }}
           >
@@ -61,5 +106,4 @@ function CreateTaskModal(props) {
     </div>
   );
 }
-
 export default CreateTaskModal;
