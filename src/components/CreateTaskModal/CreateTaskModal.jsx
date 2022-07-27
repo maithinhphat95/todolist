@@ -17,11 +17,12 @@ function CreateTaskModal(props) {
   const [status, setStatus] = useState("");
   // Constructor function of each task item
   class TaskObject {
-    constructor(title, creator, status, descript) {
+    constructor(title, creator, status, descript, order) {
       this.title = title;
       this.creator = creator;
       this.status = status;
       this.descript = descript;
+      this.order = order;
     }
   }
   // Function save the object task to the array
@@ -33,7 +34,7 @@ function CreateTaskModal(props) {
   let storeArr = (arr) => {
     localStorage.setItem("taskList", JSON.stringify(arr));
   };
-
+  let order = 1;
   // Function handle the add button
   let addNewTask = () => {
     // Get the input element
@@ -46,13 +47,14 @@ function CreateTaskModal(props) {
       titleInput.value,
       creatorInput.value,
       statusInput.value,
-      descriptInput.value
+      descriptInput.value,
+      order
     );
     console.log(newTask);
     // Save object to array
     saveArr(newTask);
     console.log(taskListArr);
-    // setShow("none");
+    order++;
   };
 
   return (
