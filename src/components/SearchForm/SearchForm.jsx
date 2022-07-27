@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./searchForm.css";
+import "../SearchForm/searchForm.css";
 SearchForm.propTypes = {};
 
 function SearchForm(props) {

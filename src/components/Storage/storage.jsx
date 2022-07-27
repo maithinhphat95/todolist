@@ -1,10 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-storage.propTypes = {};
+StorageList.propTypes = {};
 
-function storage(props) {
+function StorageList(props) {
+  let a = [{ title: "Working", author: "Phat", status: "New", descript: "Working at company" }, { title: "Working", author: "Phat", status: "New", descript: "Working at company" }, { title: "Working", author: "Phat", status: "New", descript: "Working at company" }, { title: "Working", author: "Phat", status: "New", descript: "Working at company" }]
   return a;
 }
 
-export default storage;
+export default StorageList;

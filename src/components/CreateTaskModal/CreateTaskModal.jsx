@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./createTaskModal.css";
 import { useState } from "react";
+import StorageList from "../Storage/storage"
+import { kMaxLength } from "buffer";
 CreateTaskModal.propTypes = {};
 
 // Function của modal
@@ -12,12 +14,12 @@ function CreateTaskModal(props) {
   let taskListArr = localStorage.getItem("taskList")
     ? JSON.parse(localStorage.getItem("taskList"))
     : [];
-  //
+  // State Hook
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [status, setStatus] = useState("");
   // Constructor function of each task item
-  class TaskItemObject {
+  class TaskObject {
     constructor(title, author, status, descript) {
       this.title = title;
       this.author = author;
@@ -25,7 +27,12 @@ function CreateTaskModal(props) {
       this.descript = descript;
     }
   }
-
+  // function TaskObject(title, author, status, descript) {
+  //   this.title = title;
+  //   this.author = author;
+  //   this.status = status;
+  //   this.descript = descript
+  // }
   // Function save the object task to the array
   let saveArr = (obj) => {
     taskListArr.push(obj);
@@ -35,23 +42,12 @@ function CreateTaskModal(props) {
   let storeArr = (arr) => {
     localStorage.setItem("taskList", JSON.stringify(arr));
   };
-  // Get the input element: Maybe it will not work because the element isn't still created
-  let titleInput = document.getElementById("title-id");
-  let authorInput = document.getElementById("author-id");
-  let statusInput = document.getElementById("status-id");
-  let descriptInput = document.getElementById("status-id");
+
   // Function handle the add button
   let addNewTask = () => {
-    // Create an object from input value
-    let newTask = new TaskItemObject(
-      titleInput.value,
-      authorInput.value,
-      statusInput.value,
-      descriptInput.value
-    );
-    // Save object to array
-    saveArr(newTask);
+
   };
+
   return (
     <div
       id="modal-container"
@@ -89,10 +85,31 @@ function CreateTaskModal(props) {
         </div>
         {/* Button submit */}
         <div className="modal-action">
-          <button type="button" onClick={addNewTask}>
+          {/* Button add task item */}
+          <button type="button" onClick={() => {
+            // Get the input element
+            let titleInput = document.getElementById("title-id");
+            let authorInput = document.getElementById("creator-id");
+            let statusInput = document.getElementById("status-id");
+            let descriptInput = document.getElementById("status-id");
+            // Create an object from input value
+            let newTask = new TaskObject(
+              titleInput.value,
+              authorInput.value,
+              statusInput.value,
+              descriptInput.value
+            );
+            console.log(newTask)
+            // Save object to array
+            saveArr(newTask);
+            console.log(taskListArr)
+            // setShow("none");
+          }}>
             Add
           </button>
+          {/* Button reset the input value */}
           <button type="reset">Clear</button>
+          {/* Button close the modal */}
           <button
             onClick={(e) => {
               // e.preventDefault();
