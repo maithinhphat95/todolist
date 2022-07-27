@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./taskCreatBtn.css";
+import "./taskCreateBtn.css";
 import CreatTaskModal from "../CreateTaskModal/CreateTaskModal";
 import { useState } from "react";
-TaskCreatBtn.propTypes = {};
+TaskCreateBtn.propTypes = {};
 
 // Function của Create Task Button
-function TaskCreatBtn(props) {
+function TaskCreateBtn(props) {
   const [status, setStatus] = useState(false);
   return (
     <div id="createTaskBox">
@@ -24,4 +24,4 @@ function TaskCreatBtn(props) {
   );
 }
 
-export default TaskCreatBtn;
+export default TaskCreateBtn;

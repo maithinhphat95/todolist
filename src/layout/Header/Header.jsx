@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import TaskCreatBtn from "../../components/TaskCreatBtn/TaskCreatBtn";
+import TaskCreateBtn from "../../components/TaskCreateBtn/TaskCreateBtn";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import "./header.css";
 
@@ -9,7 +9,7 @@ Header.propTypes = {};
 function Header(props) {
   return (
     <div className="header-container">
-      <TaskCreatBtn />
+      <TaskCreateBtn />
       <SearchForm />
     </div>
   );
