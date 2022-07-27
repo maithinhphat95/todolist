@@ -1,6 +1,6 @@
 .task-item {
   width: 240px;
-  height: 250px;
+  min-height: 200px;
   border: 2px solid blue;
   padding: 10px;
   border-radius: 8px;

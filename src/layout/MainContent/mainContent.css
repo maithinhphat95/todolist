@@ -1,5 +1,10 @@
 .main-content {
-  height: 100%;
-  padding-top: 64px;
+  position: fixed;
+  top: 64px;
+  left: 0;
   margin-left: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: scroll;
 }

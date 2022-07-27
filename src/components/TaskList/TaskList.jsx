@@ -4,36 +4,47 @@ import "./tasklist.css";
 TaskList.propTypes = {};
 
 function TaskList(props) {
+  let taskListArr = localStorage.getItem("taskList")
+    ? JSON.parse(localStorage.getItem("taskList"))
+    : [];
+  console.log(taskListArr);
   return (
     <div className="task-list">
-      <Taskitem taskName="Morning - Go to Work" taskAuthor="Phat" />
+      {taskListArr.map((element) => (
+        <Taskitem
+          taskTitle={element.title}
+          taskCreator={element.creator}
+          taskDescript={element.descript}
+        />
+      ))}
+      {/* <Taskitem taskTitle="Morning - Go to Work" taskCreator="Phat" />
       <Taskitem
-        taskName="Mid-day - Working"
-        taskAuthor="Phat"
-        taskDescription="Do the job at the company"
+        taskTitle="Mid-day - Working"
+        taskCreator="Phat"
+        taskDescript="Do the job at the company"
       />
       <Taskitem
-        taskName="Afternoon - Working"
-        taskAuthor="Phat"
+        taskTitle="Afternoon - Working"
+        taskCreator="Phat"
         taskDescription="Do the job at the company, submit the daily report"
       />
       <Taskitem
-        taskName="Early-night - Study"
-        taskAuthor="Phat"
+        taskTitle="Early-night - Study"
+        taskCreator="Phat"
         taskDescription="Learning FE25, meet the pretty teacher"
       />
       <Taskitem
-        taskName="Night - Study"
-        taskAuthor="Phat"
+        taskTitle="Night - Study"
+        taskCreator="Phat"
         taskDescription="Review the slide, do the Excersice"
       />
       <Taskitem
-        taskName="Late-night - Sleep"
-        taskAuthor="Phat"
+        taskTitle="Late-night - Sleep"
+        taskCreator="Phat"
         taskDescription="Have a nice dream"
       />
       <Taskitem />
-      <Taskitem />
+      <Taskitem /> */}
     </div>
   );
 }

@@ -13,5 +13,4 @@ function MainContent(props) {
     </div>
   );
 }
-
 export default MainContent;

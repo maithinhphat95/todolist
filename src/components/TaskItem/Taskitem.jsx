@@ -3,19 +3,19 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import "./taskitem.css";
 Taskitem.propTypes = {
-  taskName: PropTypes.string,
-  taskAuthor: PropTypes.string,
+  taskTitle: PropTypes.string,
+  taskCreator: PropTypes.string,
   taskStatus: PropTypes.string,
-  taskDescription: PropTypes.string,
+  taskDescript: PropTypes.string,
 };
 Taskitem.defaultProps = {
-  taskName: "Task Name",
-  taskAuthor: "Author",
+  taskTitle: "Task Name",
+  taskCreator: "Creator",
   taskStatus: "New",
-  taskDescription: "Get up, brush teeths, change the uniform and go for work",
+  taskDescript: "This is a new task",
 };
 function Taskitem(props) {
-  const { taskName, taskAuthor, taskStatus, taskDescription } = props;
+  const { taskTitle, taskCreator, taskStatus, taskDescript } = props;
   const [btnStatus, setBtnStatus] = useState("Start");
   const [status, setStatus] = useState(taskStatus);
   const [statusColor, setColor] = useState("#14ae5c");
@@ -37,12 +37,12 @@ function Taskitem(props) {
   return (
     <div className="task-item">
       <div>
-        <b>Title: {taskName}</b>
-        <p>Creator: {taskAuthor}</p>
+        <b>Title: {taskTitle}</b>
+        <p>Creator: {taskCreator}</p>
         <b style={{ color: statusColor }}>Status: {status}</b>
         <div className="task-description">
           <b>Description:</b>
-          <p>{taskDescription}</p>
+          <p>{taskDescript}</p>
         </div>
       </div>
       <button className="status-btn" onClick={changeStatus}>
