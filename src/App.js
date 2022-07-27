@@ -9,7 +9,6 @@ function App() {
     <div className="container">
       <Header />
       <SideBar />
-      {/* <MainContent /> */}
     </div>
   );
 }
