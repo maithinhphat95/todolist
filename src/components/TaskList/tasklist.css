@@ -1,12 +1,11 @@
 .task-list {
-  /* background-color: #748dce; */
   margin: 0 auto;
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 16px;
   align-content: flex-start;
-  /* overflow: scroll; */
-  /* min-height: 100vh; */
+  max-height: calc(100vh - 134px);
+  overflow-y: scroll;
 }
