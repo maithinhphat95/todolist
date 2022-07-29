@@ -15,9 +15,9 @@ Taskitem.defaultProps = {
   taskDescript: "This is a new task",
 };
 function Taskitem(props) {
-  const { taskTitle, taskCreator, taskStatus, taskDescript } = props;
+  const { item, key, idx } = props;
   const [btnStatus, setBtnStatus] = useState("Start");
-  const [status, setStatus] = useState(taskStatus);
+  const [status, setStatus] = useState(item.taskStatus);
   const [statusColor, setColor] = useState("#14ae5c");
   function changeStatus() {
     if (status === "New") {
@@ -37,12 +37,12 @@ function Taskitem(props) {
   return (
     <div className="task-item">
       <div>
-        <b>Title: {taskTitle}</b>
-        <p>Creator: {taskCreator}</p>
+        <b>Title: {item.title}</b>
+        <p>Creator: {item.creator}</p>
         <b style={{ color: statusColor }}>Status: {status}</b>
         <div className="task-description">
           <b>Description:</b>
-          <p>{taskDescript}</p>
+          <p>{item.descript}</p>
         </div>
       </div>
       <button className="status-btn" onClick={changeStatus}>

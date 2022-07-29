@@ -9,6 +9,8 @@ CreateTaskModal.propTypes = {};
 let taskListArr = localStorage.getItem("taskList")
   ? JSON.parse(localStorage.getItem("taskList"))
   : [];
+let id = taskListArr.length + 1;
+console.log(id);
 // Function của modal
 function CreateTaskModal(props) {
   // State Hook
@@ -17,12 +19,12 @@ function CreateTaskModal(props) {
   const [status, setStatus] = useState("");
   // Constructor function of each task item
   class TaskObject {
-    constructor(title, creator, status, descript, order) {
+    constructor(title, creator, status, descript, id) {
       this.title = title;
       this.creator = creator;
       this.status = status;
       this.descript = descript;
-      this.order = order;
+      this.id = id;
     }
   }
   // Function save the object task to the array
@@ -34,27 +36,29 @@ function CreateTaskModal(props) {
   let storeArr = (arr) => {
     localStorage.setItem("taskList", JSON.stringify(arr));
   };
-  let order = 1;
+
   // Function handle the add button
   let addNewTask = () => {
     // Get the input element
     let titleInput = document.getElementById("title-id");
     let creatorInput = document.getElementById("creator-id");
     let statusInput = document.getElementById("status-id");
-    let descriptInput = document.getElementById("status-id");
+    let descriptInput = document.getElementById("description-id");
     // Create an object from input value
     let newTask = new TaskObject(
       titleInput.value,
       creatorInput.value,
       statusInput.value,
       descriptInput.value,
-      order
+      id
     );
-    console.log(newTask);
     // Save object to array
     saveArr(newTask);
     console.log(taskListArr);
-    order++;
+
+    id++;
+    alert("A new task had been created");
+    document.querySelector("button[type='reset']").click();
   };
 
   return (
