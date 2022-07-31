@@ -1,5 +1,6 @@
 .header-container {
-  background-color: #3a57a2;
+  /* background-color: #3a57a2; */
+  background-color: var(--primary-color);
   height: 64px;
   position: fixed;
   top: 0;

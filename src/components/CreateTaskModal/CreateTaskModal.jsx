@@ -1,16 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./createTaskModal.css";
+import "./createTaskModal.scss";
 import { useState } from "react";
-import StorageList from "../Storage/storage";
-import { kMaxLength } from "buffer";
 CreateTaskModal.propTypes = {};
 // Get the array of task list from local storage
 let taskListArr = localStorage.getItem("taskList")
   ? JSON.parse(localStorage.getItem("taskList"))
   : [];
-let id = taskListArr.length + 1;
-console.log(id);
+let count = taskListArr.length;
+
 // Function của modal
 function CreateTaskModal(props) {
   // State Hook
@@ -24,7 +22,7 @@ function CreateTaskModal(props) {
       this.creator = creator;
       this.status = status;
       this.descript = descript;
-      this.id = id;
+      this.id = count;
     }
   }
   // Function save the object task to the array
@@ -50,19 +48,29 @@ function CreateTaskModal(props) {
       creatorInput.value,
       statusInput.value,
       descriptInput.value,
-      id
+      count
     );
-    // Save object to array
-    saveArr(newTask);
-    console.log(taskListArr);
+    console.log(count);
+    count++;
 
-    id++;
-    alert("A new task had been created");
-    document.querySelector("button[type='reset']").click();
+    // Save object to array
+    if (
+      !titleInput.value ||
+      !creatorInput.value ||
+      !statusInput.value ||
+      !descriptInput.value
+    ) {
+      return;
+    } else {
+      saveArr(newTask);
+      console.log(taskListArr);
+      alert("A new task had been created");
+      document.querySelector("button[type='reset']").click();
+    }
   };
 
   return (
-    <div id="modal-container" className="">
+    <div id="modal-container" className="modal">
       {/* Form input new Task */}
       <form className="modal-form">
         <h1>Creat a new Task</h1>

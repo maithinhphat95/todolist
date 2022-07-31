@@ -8,7 +8,7 @@ MainContent.propTypes = {};
 function MainContent(props) {
   return (
     <div className="main-content">
-      <TaskList />
+      <TaskList count={1} />
       <Panigation />
     </div>
   );

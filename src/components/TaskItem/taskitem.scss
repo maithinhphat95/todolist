@@ -1,0 +1,27 @@
+.task-item {
+  width: 240px;
+  min-height: 200px;
+  border: 2px solid blue;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &-description {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 2px solid blue;
+    p {
+      min-height: 40px;
+    }
+  }
+  select {
+    padding: 4px;
+    width: 100px;
+    align-self: center;
+    border-radius: 4px;
+    border: 2px solid black;
+    font-weight: bold;
+  }
+}

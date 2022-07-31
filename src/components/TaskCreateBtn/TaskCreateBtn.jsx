@@ -10,9 +10,9 @@ TaskCreateBtn.propTypes = {};
 function TaskCreateBtn(props) {
   const [status, setStatus] = useState(false);
   return (
-    <div id="createTaskBox">
+    <div id="create-taskbox">
       <button
-        className="createBtn"
+        className="create-btn"
         value=""
         onClick={() => {
           setStatus(!status);
