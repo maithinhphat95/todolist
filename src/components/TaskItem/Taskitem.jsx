@@ -16,16 +16,23 @@ Taskitem.defaultProps = {
 };
 
 function Taskitem(props) {
-  const { item, idx } = props;
-  const [status, setStatus] = useState(item.status);
-  const [statusColor, setColor] = useState("var(--new-color)");
+  let taskListArr = localStorage.getItem("taskList")
+    ? JSON.parse(localStorage.getItem("taskList"))
+    : [];
   const colorArr = ["var(--new-color)", "orange", "blue"];
   const statusArr = ["New", "Doing", "Done"];
+  const { item, idx } = props;
+  const [status, setStatus] = useState(item.status);
+  const [statusColor, setColor] = useState(
+    colorArr[statusArr.indexOf(item.status)]
+  );
 
   let changeStatus = (e) => {
     setStatus(statusArr[e.target.value]);
     setColor(colorArr[e.target.value]);
   };
+  taskListArr[idx].status = status;
+  localStorage.setItem("taskList", JSON.stringify(taskListArr));
   return (
     <div className="task-item">
       <div>
@@ -40,12 +47,13 @@ function Taskitem(props) {
       <select
         style={{ display: "block", backgroundColor: statusColor }}
         onChange={changeStatus}
+        value={statusArr.indexOf(status)}
       >
         {statusArr.length &&
-          statusArr.map((status, index) => {
+          statusArr.map((element, index) => {
             return (
               <option key={index} value={index}>
-                {status}
+                {element}
               </option>
             );
           })}
