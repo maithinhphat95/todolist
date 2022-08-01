@@ -2,19 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./createTaskModal.scss";
 import { useState } from "react";
-CreateTaskModal.propTypes = {};
-// Get the array of task list from local storage
-let taskListArr = localStorage.getItem("taskList")
-  ? JSON.parse(localStorage.getItem("taskList"))
-  : [];
-let count = taskListArr.length;
+import { Link } from "react-router-dom";
 
+CreateTaskModal.propTypes = {};
+
+let taskListArr = JSON.parse(localStorage.getItem("taskList")) || [];
+let count = taskListArr.length;
 // Function của modal
 function CreateTaskModal(props) {
   // State Hook
-  const [title, setTitle] = useState("");
-  const [creator, setCreator] = useState("");
-  const [status, setStatus] = useState("");
+  const [taskObject, setTaskObject] = useState({
+    title: "",
+    creator: "",
+    status: "",
+    descript: "",
+    id: "",
+  });
   // Constructor function of each task item
   class TaskObject {
     constructor(title, creator, status, descript, id) {
@@ -77,17 +80,17 @@ function CreateTaskModal(props) {
         {/* Title */}
         <div className="modal-item">
           <label htmlFor="title-id">Title:</label>{" "}
-          <input type="text" id="title-id" />{" "}
+          <input type="text" name="title" id="title-id" />{" "}
         </div>
         {/* Creator */}
         <div className="modal-item">
           <label htmlFor="creator-id">Creator:</label>{" "}
-          <input type="text" id="creator-id" />{" "}
+          <input type="text" name="creator" id="creator-id" />{" "}
         </div>
         {/* Status */}
         <div className="modal-item">
           <label htmlFor="status-id">Status:</label>{" "}
-          <select name="task-status" id="status-id">
+          <select className="task-status" name="status" id="status-id">
             <option value={"New"}>New</option>
             <option value={"Doing"}>Doing</option>
             <option value={"Done"}>Done</option>
@@ -96,7 +99,12 @@ function CreateTaskModal(props) {
         {/* Description */}
         <div className="modal-item">
           <label htmlFor="description-id">Description:</label>{" "}
-          <textarea name="" id="description-id" cols="30" rows="5"></textarea>
+          <textarea
+            id="description-id"
+            name="descript"
+            cols="30"
+            rows="5"
+          ></textarea>
         </div>
         {/* Button submit */}
         <div className="modal-action">
@@ -106,6 +114,9 @@ function CreateTaskModal(props) {
           </button>
           {/* Button reset the input value */}
           <button type="reset">Clear</button>
+          <Link to="/">
+            <button>Close</button>
+          </Link>
         </div>
       </form>
     </div>

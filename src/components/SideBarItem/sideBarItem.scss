@@ -1,0 +1,16 @@
+.sidebar-item {
+  height: 60px;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 2px solid white;
+  display: flex;
+  & > button {
+    margin: 0 auto;
+    background-color: transparent;
+    font-size: 24px;
+    font-weight: 500;
+    border: 0;
+    cursor: pointer;
+    color: white;
+  }
+}

@@ -6,9 +6,10 @@ import "./mainContent.css";
 MainContent.propTypes = {};
 
 function MainContent(props) {
+  const { sortby } = props;
   return (
     <div className="main-content">
-      <TaskList count={1} />
+      <TaskList />
       <Panigation />
     </div>
   );

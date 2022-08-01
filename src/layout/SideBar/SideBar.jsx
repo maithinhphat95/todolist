@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import SideBarItem from "../../components/SideBarItem/SideBarItem";
 import "./sideBar.css";
+import { Link } from "react-router-dom";
 SideBar.propTypes = {};
 
 function SideBar(props) {

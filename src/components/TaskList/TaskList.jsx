@@ -8,6 +8,7 @@ function TaskList(props) {
   let taskListArr = localStorage.getItem("taskList")
     ? JSON.parse(localStorage.getItem("taskList"))
     : [];
+
   return (
     <div className="task-list">
       {taskListArr.map((item, index) => (

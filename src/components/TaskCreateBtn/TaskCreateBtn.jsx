@@ -18,9 +18,10 @@ function TaskCreateBtn(props) {
           setStatus(!status);
         }}
       >
-        {status ? "Home" : "Create New Task"}
+        Create New Task
+        {/* {status ? "Home" : "Create New Task"} */}
       </button>
-      {status ? <CreatTaskModal /> : <MainContent />}
+      {/* {status ? <CreatTaskModal /> : <MainContent />} */}
     </div>
   );
 }
