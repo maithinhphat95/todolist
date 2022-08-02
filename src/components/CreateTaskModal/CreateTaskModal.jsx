@@ -35,13 +35,20 @@ function CreateTaskModal(props) {
     e.preventDefault();
     // Valid data and save data
     let checkTitle = taskListArr.every((e) => e.title != taskObject.title);
-    if (checkTitle) {
+    let checkInput =
+      taskObject.title == "" ||
+      taskObject.creator == "" ||
+      taskObject.status == "" ||
+      taskObject.descript == "";
+    if (checkTitle && checkInput) {
       setTaskObject({ ...taskObject, id: taskListArr.length });
       saveData(taskObject);
       count++;
       alert("A new task had been created");
-    } else {
+    } else if (!checkTitle) {
       alert("Please input other task, the title is existing");
+    } else if (!checkInput) {
+      alert("Please fill all information of the new task");
     }
     console.log(taskObject);
     console.log(taskListArr);
@@ -82,6 +89,7 @@ function CreateTaskModal(props) {
             name="status"
             id="status-id"
             onChange={handleChangeValue}
+            valueDefault="New"
           >
             <option value={"New"}>New</option>
             <option value={"Doing"}>Doing</option>
