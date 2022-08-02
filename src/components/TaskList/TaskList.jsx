@@ -12,7 +12,7 @@ function TaskList(props) {
   return (
     <div className="task-list">
       {taskListArr.map((item, index) => (
-        <Taskitem item={item} key={item.id} idx={index} />
+        <Taskitem item={item} key={index} idx={index} />
       ))}
     </div>
   );

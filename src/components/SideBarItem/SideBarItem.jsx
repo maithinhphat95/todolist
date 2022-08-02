@@ -13,17 +13,17 @@ function SideBarItem(props) {
   const { buttonText } = props;
   return (
     <div className="sidebar-item">
-      <Link to={"/" + sort}>
+      <Link to={"/todolist/" + sort}>
         <button
           onClick={() => {
             setSort(
-              buttonText == "New Task"
+              buttonText === "New Task"
                 ? "new"
-                : buttonText == "Doing Task"
-                ? "doing"
-                : buttonText == "Done Task"
-                ? "done"
-                : ""
+                : buttonText === "Doing Task"
+                  ? "doing"
+                  : buttonText === "Done Task"
+                    ? "done"
+                    : ""
             );
             console.log(sort);
           }}

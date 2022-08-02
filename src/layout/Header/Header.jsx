@@ -10,7 +10,7 @@ Header.propTypes = {};
 function Header(props) {
   return (
     <div className="header-container">
-      <Link to="/create">
+      <Link to="/todolist/create">
         <TaskCreateBtn />
       </Link>
       <SearchForm />
