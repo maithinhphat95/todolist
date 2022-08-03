@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./createTaskModal.scss";
+import MainContent from "../../layout/MainContent/MainContent";
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 
