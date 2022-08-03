@@ -6,11 +6,14 @@ import "./mainContent.css";
 MainContent.propTypes = {};
 
 function MainContent(props) {
-  const { sortby } = props;
+  const { sort } = props;
+  let data = JSON.parse(localStorage.getItem("taskList")) || [];
+  let singlePage = data.length <= 8 ? true : false;
+  console.log(sort);
   return (
     <div className="main-content">
-      <TaskList />
-      <Panigation />
+      <TaskList sort={sort} />
+      {singlePage ? null : <Panigation />}
     </div>
   );
 }

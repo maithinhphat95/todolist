@@ -32,8 +32,7 @@ function Taskitem(props) {
     setStatus(statusArr[e.target.value]);
     setColor(colorArr[e.target.value]);
   };
-  console.log(statusColor);
-  taskListArr[idx].status = status;
+  taskListArr[item.id].status = status;
   localStorage.setItem("taskList", JSON.stringify(taskListArr));
 
   return (

@@ -8,10 +8,17 @@ function TaskList(props) {
   let taskListArr = localStorage.getItem("taskList")
     ? JSON.parse(localStorage.getItem("taskList"))
     : [];
+  const { sort } = props;
+  let dataShow = [];
+  if (sort == "") {
+    dataShow = taskListArr;
+  } else {
+    dataShow = taskListArr.filter((element) => element.status == sort);
+  }
 
   return (
     <div className="task-list">
-      {taskListArr.map((item, index) => (
+      {dataShow.map((item, index) => (
         <Taskitem item={item} key={item.id} idx={index} />
       ))}
     </div>

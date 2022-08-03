@@ -26,7 +26,6 @@ function SideBarItem(props) {
                   ? "done"
                   : ""
               );
-              console.log(sort);
             }}
           >
             {buttonText}

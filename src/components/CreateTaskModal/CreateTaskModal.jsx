@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./createTaskModal.scss";
 import { useState } from "react";
 // import { Link, Navigate } from "react-router-dom";
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 // import { Navigate } from "react-router";
 
 CreateTaskModal.propTypes = {};
@@ -26,6 +26,7 @@ function CreateTaskModal(props) {
     status: "New",
     id: count,
   });
+  let navigate = useNavigate();
   // Function handle the value changed
   let handleChangeValue = (e) => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value });
@@ -50,12 +51,8 @@ function CreateTaskModal(props) {
       saveData(formValue);
       count++;
       alert("A new task had been created");
-
       // navigate to "/taskList" (Home page)
-
-      <Navigate replace to="/todolist/" />;
-      // <Navigate to="/todolist/" replace={true} />;
-      // <Redirect to="/todolist/" />;
+      navigate("/todolist/", { replace: true });
     } else if (!checkTitle) {
       alert("Please input other task, the title is existing");
     } else if (checkInput) {

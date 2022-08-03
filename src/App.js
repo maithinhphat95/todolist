@@ -14,10 +14,16 @@ function App() {
         <SideBar />
         <main className="main-content">
           <Routes>
-            <Route path="/todolist/" element={<MainContent sort="all" />} />
-            <Route path="/todolist/new" element={<MainContent sort="new" />} />
-            <Route path="/todolist/doing" element={<MainContent sort="doing" />} />
-            <Route path="/todolist/done" element={<MainContent sort="done" />} />
+            <Route path="/todolist/" element={<MainContent sort="" />} />
+            <Route path="/todolist/new" element={<MainContent sort="New" />} />
+            <Route
+              path="/todolist/doing"
+              element={<MainContent sort="Doing" />}
+            />
+            <Route
+              path="/todolist/done"
+              element={<MainContent sort="Done" />}
+            />
             <Route path="/todolist/create" element={<CreateTaskModal />} />
           </Routes>
         </main>
