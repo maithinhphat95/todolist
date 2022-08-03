@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./createTaskModal.scss";
-import MainContent from "../../layout/MainContent/MainContent";
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+// import { Link, Navigate } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 
 CreateTaskModal.propTypes = {};
 
@@ -12,7 +12,6 @@ function CreateTaskModal(props) {
   // Init the data array
   let taskListArr = JSON.parse(localStorage.getItem("taskList")) || [];
   let count = taskListArr.length;
-  console.log(count);
   // Function save the object task to the array
   let saveData = (obj) => {
     taskListArr.push(obj);
@@ -26,31 +25,36 @@ function CreateTaskModal(props) {
     status: "New",
     id: count,
   });
-
   // Function handle the value changed
   let handleChangeValue = (e) => {
     setFormValue({ ...formValue, [e.target.name]: e.target.value });
   };
-  // setFormValue({ ...formValue, id: 2 });
-  console.log(formValue);
-
   // Function handle the add button
   let handleAddForm = (e) => {
     e.preventDefault();
-    // Valid data and save data
-    let checkTitle = taskListArr.every((e) => e.title != formValue.title);
+    // Validate data and save data
+    // Validate blank input data
     let checkInput =
       formValue.title == "" ||
       formValue.creator == "" ||
       formValue.status == "" ||
       formValue.descript == "";
+    // Validate the title is duplicated
+    let checkTitle = taskListArr.every((e) => e.title != formValue.title);
+
+    // Save the new task to data in the localstorage
     if (checkTitle && !checkInput) {
       formValue.id = count;
+      // setFormValue({ ...formValue, id: 2 });
       saveData(formValue);
       count++;
       alert("A new task had been created");
+
       // navigate to "/taskList" (Home page)
-      <Navigate to="/todolist/" replace={true} />;
+
+      <Navigate replace to="/todolist/" />;
+      // <Navigate to="/todolist/" replace={true} />;
+      // <Redirect to="/todolist/" />;
     } else if (!checkTitle) {
       alert("Please input other task, the title is existing");
     } else if (checkInput) {
@@ -108,10 +112,9 @@ function CreateTaskModal(props) {
             onChange={handleChangeValue}
           ></textarea>
         </div>
+        {/* Event button */}
         <div className="modal-action">
-          {/* Button add task item */}
           <button type="submit">Add</button>
-          {/* Button reset the input value */}
           <button type="reset">Clear</button>
           <Link to="/todolist/">
             <button>Close</button>
