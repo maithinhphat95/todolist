@@ -16,6 +16,7 @@ Taskitem.defaultProps = {
 };
 
 function Taskitem(props) {
+  // Init the tasklist Array
   let taskListArr = localStorage.getItem("taskList")
     ? JSON.parse(localStorage.getItem("taskList"))
     : [];
@@ -31,8 +32,10 @@ function Taskitem(props) {
     setStatus(statusArr[e.target.value]);
     setColor(colorArr[e.target.value]);
   };
+  console.log(statusColor);
   taskListArr[idx].status = status;
   localStorage.setItem("taskList", JSON.stringify(taskListArr));
+
   return (
     <div className="task-item">
       <div>

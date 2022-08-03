@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./createTaskModal.scss";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 CreateTaskModal.propTypes = {};
 
@@ -11,49 +11,50 @@ function CreateTaskModal(props) {
   // Init the data array
   let taskListArr = JSON.parse(localStorage.getItem("taskList")) || [];
   let count = taskListArr.length;
-  // State Hook
-  const [taskObject, setTaskObject] = useState({
-    title: "",
-    creator: "",
-    status: "",
-    descript: "",
-    id: count,
-  });
-
+  console.log(count);
   // Function save the object task to the array
   let saveData = (obj) => {
     taskListArr.push(obj);
     localStorage.setItem("taskList", JSON.stringify(taskListArr));
   };
+  // State Hook
+  const [formValue, setFormValue] = useState({
+    title: "",
+    creator: "",
+    descript: "",
+    status: "New",
+    id: count,
+  });
 
   // Function handle the value changed
   let handleChangeValue = (e) => {
-    setTaskObject({ ...taskObject, [e.target.name]: e.target.value });
+    setFormValue({ ...formValue, [e.target.name]: e.target.value });
   };
+  // setFormValue({ ...formValue, id: 2 });
+  console.log(formValue);
+
   // Function handle the add button
   let handleAddForm = (e) => {
     e.preventDefault();
     // Valid data and save data
-    let checkTitle = taskListArr.every((e) => e.title != taskObject.title);
+    let checkTitle = taskListArr.every((e) => e.title != formValue.title);
     let checkInput =
-      taskObject.title == "" ||
-      taskObject.creator == "" ||
-      taskObject.status == "" ||
-      taskObject.descript == "";
-    if (checkTitle && checkInput) {
-      setTaskObject({ ...taskObject, id: taskListArr.length });
-      saveData(taskObject);
+      formValue.title == "" ||
+      formValue.creator == "" ||
+      formValue.status == "" ||
+      formValue.descript == "";
+    if (checkTitle && !checkInput) {
+      formValue.id = count;
+      saveData(formValue);
       count++;
       alert("A new task had been created");
+      // navigate to "/taskList" (Home page)
+      <Navigate to="/todolist/" replace={true} />;
     } else if (!checkTitle) {
       alert("Please input other task, the title is existing");
-    } else if (!checkInput) {
+    } else if (checkInput) {
       alert("Please fill all information of the new task");
     }
-    console.log(taskObject);
-    console.log(taskListArr);
-    console.log(count);
-    // navigate to "/taskList" (Home page)
   };
 
   return (
@@ -89,7 +90,6 @@ function CreateTaskModal(props) {
             name="status"
             id="status-id"
             onChange={handleChangeValue}
-            valueDefault="New"
           >
             <option value={"New"}>New</option>
             <option value={"Doing"}>Doing</option>
