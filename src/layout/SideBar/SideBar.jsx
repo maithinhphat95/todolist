@@ -8,10 +8,18 @@ SideBar.propTypes = {};
 function SideBar(props) {
   return (
     <div className="sidebar-container">
-      <SideBarItem buttonText="All Task" />
-      <SideBarItem buttonText="New Task" />
-      <SideBarItem buttonText="Doing Task" />
-      <SideBarItem buttonText="Done Task" />
+      <Link to="/todolist/">
+        <SideBarItem buttonText="All Task" />
+      </Link>
+      <Link to="/todolist/new">
+        <SideBarItem buttonText="New Task" />
+      </Link>
+      <Link to="/todolist/doing">
+        <SideBarItem buttonText="Doing Task" />
+      </Link>
+      <Link to="/todolist/done">
+        <SideBarItem buttonText="Done Task" />
+      </Link>
     </div>
   );
 }
