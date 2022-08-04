@@ -20,7 +20,7 @@ function Taskitem(props) {
   let taskListArr = localStorage.getItem("taskList")
     ? JSON.parse(localStorage.getItem("taskList"))
     : [];
-  const colorArr = ["var(--new-color)", "orange", "blue"];
+  const colorArr = ["var(--new-color)", "orange", "var(--primary-color)"];
   const statusArr = ["New", "Doing", "Done"];
   const { item, idx } = props;
   const [status, setStatus] = useState(item.status);

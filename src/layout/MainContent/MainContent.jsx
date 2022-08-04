@@ -1,19 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TaskList from "../../components/TaskList/TaskList";
-import Panigation from "../../components/Panigation/Panigation";
+import Pagination from "../../components/Pagination/Pagination";
 import storage from "../../components/Storage";
 import "./mainContent.css";
 MainContent.propTypes = {};
-
 function MainContent(props) {
-  const { sort } = props;
+  const { sort, pageIndex } = props;
   // Get the data array from localstorage
   let data = JSON.parse(localStorage.getItem("taskList")) || [];
-  let singlePage = data.length <= 8 ? true : false;
   // Use the random datas
   if (
-    data.length == 0 &&
+    data.length === 0 &&
     window.confirm(
       "The localstorage doesn't have any data. Do you want to you random datas?"
     )
@@ -23,16 +21,22 @@ function MainContent(props) {
   }
   // Init the data had been sort
   let dataSort = [];
-  if (sort == "") {
+  if (sort === "") {
     dataSort = data;
   } else {
-    dataSort = data.filter((element) => element.status == sort);
+    dataSort = data.filter((element) => element.status === sort);
   }
-
+  // Page division for panigation
+  let limit = 10;
+  let maxPage = dataSort.length <= limit ? true : false;
+  let index = pageIndex || 1;
+  console.log(index);
   return (
     <div className="main-content">
       <TaskList sort={sort} display={dataSort} />
-      {singlePage ? null : <Panigation />}
+      {maxPage ? null : (
+        <Pagination limitPage={limit} sort={sort} display={dataSort} />
+      )}
     </div>
   );
 }
