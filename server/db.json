@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Task1",
       "creator": "Phat",
-      "status": "New",
+      "status": "0",
       "descript": "This is new task 1"
     },
     {

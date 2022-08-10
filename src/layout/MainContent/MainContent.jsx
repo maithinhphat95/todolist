@@ -11,29 +11,26 @@ function MainContent(props) {
   // Props
   const { sort } = props;
   // Hook
-  const [taslList, setTasklist] = useState([]);
+  const [tastList, setTasklist] = useState([]);
   useEffect(() => {
     // Fetch data from JSON server
     fetch(url)
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((data) => setTasklist(data));
   }, []);
 
   // Init the data had been sort
   let dataSort = [];
   if (sort === "") {
-    dataSort = taslList;
+    dataSort = tastList;
   } else {
-    dataSort = taslList.filter((element) => element.status === sort);
+    dataSort = tastList.filter((element) => element.status === sort);
   }
-
+  let changeDisplay = (arr) => {};
   // Render
   return (
     <div className="main-content">
-      <TaskList sort={sort} display={dataSort} />
+      <TaskList sort={sort} display={dataSort} changedSort={changeDisplay} />
       <Pagination />
     </div>
   );

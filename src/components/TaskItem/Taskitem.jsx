@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import "./taskitem.scss";
+import { ALL_STATUS } from "../../constant";
 
 Taskitem.propTypes = {
   taskTitle: PropTypes.string,
@@ -18,20 +19,13 @@ Taskitem.defaultProps = {
 
 function Taskitem(props) {
   // Prop
-  const { initialItem, idx } = props;
+  const { initialItem, handleChangeStatus } = props;
   const colorArr = ["var(--new-color)", "orange", "var(--primary-color)"];
-  const statusArr = ["New", "Doing", "Done"];
   // Hook
   const [status, setStatus] = useState(initialItem.status);
   const [statusColor, setColor] = useState(
-    colorArr[statusArr.indexOf(initialItem.status)]
+    colorArr[ALL_STATUS.indexOf(initialItem.status)]
   );
-
-  // Function change status
-  let changeStatus = (e) => {
-    setStatus(statusArr[e.target.value]);
-    setColor(colorArr[e.target.value]);
-  };
 
   return (
     <div className="task-item">
@@ -46,11 +40,15 @@ function Taskitem(props) {
       </div>
       <select
         style={{ display: "block", backgroundColor: statusColor }}
-        onChange={changeStatus}
-        value={statusArr.indexOf(status)}
+        onChange={(e) => {
+          setStatus(ALL_STATUS[e.target.value]);
+          setColor(colorArr[e.target.value]);
+          handleChangeStatus(initialItem, e.target.value);
+        }}
+        value={[ALL_STATUS.indexOf(status)]}
       >
-        {statusArr.length &&
-          statusArr.map((element, index) => {
+        {ALL_STATUS.length &&
+          ALL_STATUS.map((element, index) => {
             return (
               <option key={index} value={index}>
                 {element}
