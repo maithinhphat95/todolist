@@ -5,11 +5,8 @@ import TaskList from "../TaskList/TaskList";
 Pagination.propTypes = {};
 
 function Pagination(props) {
-  const { limitPage, currentPage, maxPageLitmit, minPageLimit } = props;
-  const totalPage = Math.ceil(
-    JSON.parse(localStorage.getItem("taskList")).length / limitPage
-  ).toFixed(0);
-  console.log(totalPage);
+  const {} = props;
+
   return (
     <div className="pagination">
       <div className="pagination-item">

@@ -2,68 +2,80 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./createTaskModal.scss";
 import { useState } from "react";
-// import { Link, Navigate } from "react-router-dom";
+import { url } from "../../constant";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-// import { Navigate } from "react-router";
-
-CreateTaskModal.propTypes = {};
 
 // Function của modal
+
 function CreateTaskModal(props) {
-  // Init the data array
-  let taskListArr = JSON.parse(localStorage.getItem("taskList")) || [];
-  let count = taskListArr.length;
-  // Function save the object task to the array
-  let saveData = (obj) => {
-    taskListArr.push(obj);
-    localStorage.setItem("taskList", JSON.stringify(taskListArr));
-  };
   // State Hook
   const [formValue, setFormValue] = useState({
     title: "",
     creator: "",
-    descript: "",
     status: "New",
-    id: count,
+    descript: "",
   });
-  let navigate = useNavigate();
+
+  const [data, setData] = useState([]); // Init data of tasklist
+
+  // Init the variable
+  const navigate = useNavigate();
+
+  // Fetch data
+  fetch(url)
+    .then((response) => response.json())
+    .then((value) => setData(value));
+
   // Function handle the value changed
-  let handleChangeValue = (e) => {
-    setFormValue({ ...formValue, [e.target.name]: e.target.value });
+  const handleChangeValue = (event) => {
+    setFormValue({
+      ...formValue,
+      [event.target.name]: event.target.value,
+    });
   };
+
   // Function handle the add button
-  let handleAddForm = (e) => {
+  const handleCreateTask = (e) => {
     e.preventDefault();
+
     // Validate data and save data
-    // Validate blank input data
     let checkInput =
       formValue.title == "" ||
       formValue.creator == "" ||
       formValue.status == "" ||
       formValue.descript == "";
+
     // Validate the title is duplicated
-    let checkTitle = taskListArr.every((e) => e.title != formValue.title);
+    let checkTitle = data.every((e) => e.title != formValue.title);
 
     // Save the new task to data in the localstorage
     if (checkTitle && !checkInput) {
-      formValue.id = count;
-      // setFormValue({ ...formValue, id: 2 });
-      saveData(formValue);
-      count++;
+      console.log(formValue);
+      // Call post API
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formValue),
+      })
+        .then((response) => response.json()) // get the Promise
+        .then((data) => console.log(data)) // Call the resolve of promise
+        .catch((error) => console.log(error));
+
+      // Noti and navigate
       alert("A new task had been created");
-      // navigate to "/taskList" (Home page)
       navigate("/todolist/", { replace: true });
     } else if (!checkTitle) {
       alert("Please input other task, the title is existing");
-    } else if (checkInput) {
+    } else {
       alert("Please fill all information of the new task");
     }
   };
 
+  // Render
   return (
     <div id="modal-container" className="modal">
       {/* Form input new Task */}
-      <form className="modal-form" onSubmit={handleAddForm}>
+      <form className="modal-form" onSubmit={handleCreateTask}>
         <h1>Creat a new Task</h1>
         {/* Title */}
         <div className="modal-item">

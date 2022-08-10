@@ -1,42 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import TaskList from "../../components/TaskList/TaskList";
 import Pagination from "../../components/Pagination/Pagination";
-import storage from "../../components/Storage";
 import "./mainContent.css";
+import { url } from "../../constant";
+
 MainContent.propTypes = {};
+
 function MainContent(props) {
-  const { sort, pageIndex } = props;
-  // Get the data array from localstorage
-  let data = JSON.parse(localStorage.getItem("taskList")) || [];
-  // Use the random datas
-  if (
-    data.length === 0 &&
-    window.confirm(
-      "The localstorage doesn't have any data. Do you want to you random datas?"
-    )
-  ) {
-    data = storage;
-    localStorage.setItem("taskList", JSON.stringify(data));
-  }
+  // Props
+  const { sort } = props;
+  // Hook
+  const [taslList, setTasklist] = useState([]);
+  useEffect(() => {
+    // Fetch data from JSON server
+    fetch(url)
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((data) => setTasklist(data));
+  }, []);
+
   // Init the data had been sort
   let dataSort = [];
   if (sort === "") {
-    dataSort = data;
+    dataSort = taslList;
   } else {
-    dataSort = data.filter((element) => element.status === sort);
+    dataSort = taslList.filter((element) => element.status === sort);
   }
-  // Page division for panigation
-  let limit = 10;
-  let maxPage = dataSort.length <= limit ? true : false;
-  let index = pageIndex || 1;
-  console.log(index);
+
+  // Render
   return (
     <div className="main-content">
       <TaskList sort={sort} display={dataSort} />
-      {maxPage ? null : (
-        <Pagination limitPage={limit} sort={sort} display={dataSort} />
-      )}
+      <Pagination />
     </div>
   );
 }
