@@ -50,7 +50,6 @@ function CreateTaskModal(props) {
 
     // Save the new task to data in the localstorage
     if (checkTitle && !checkInput) {
-      console.log(formValue);
       // Call post API
       fetch(url, {
         method: "POST",
@@ -62,12 +61,12 @@ function CreateTaskModal(props) {
         .catch((error) => console.log(error));
 
       // Noti and navigate
-      alert("A new task had been created");
+      alert("Congratulation!!! A new task had been created");
       navigate("/todolist/", { replace: true });
     } else if (!checkTitle) {
-      alert("Please input other task, the title is existing");
+      alert("Error!!! Please input other task, the title is existing");
     } else {
-      alert("Please fill all information of the new task");
+      alert("Error!!! Please fill all information of the new task");
     }
   };
 

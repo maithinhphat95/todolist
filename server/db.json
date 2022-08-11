@@ -4,14 +4,14 @@
       "id": 1,
       "title": "Task1",
       "creator": "Phat",
-      "status": "Doing",
+      "status": "New",
       "descript": "This is new task 1"
     },
     {
       "id": 2,
       "title": "Task2",
       "creator": "Phat",
-      "status": "Doing",
+      "status": "New",
       "descript": "This is new task 2"
     },
     {
@@ -118,6 +118,20 @@
       "status": "Done",
       "descript": "1",
       "id": 17
+    },
+    {
+      "title": "4",
+      "creator": "4",
+      "status": "Done",
+      "descript": "4",
+      "id": 18
+    },
+    {
+      "title": "5",
+      "creator": "1",
+      "status": "New",
+      "descript": "1",
+      "id": 19
     }
   ]
 }
