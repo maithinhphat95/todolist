@@ -8,11 +8,13 @@ TaskList.propTypes = {};
 
 function TaskList(props) {
   // Props
-  const { display, changedSort } = props;
+  const { sort } = props;
   // Hook
   const [taskList, setTaskList] = useState([]);
+
   // Get tasklist API
   useEffect(() => {
+    // Fetch data from JSON server
     fetch(url)
       .then((response) => response.json())
       .then((data) => setTaskList(data))
@@ -20,6 +22,15 @@ function TaskList(props) {
         console.log(error);
       });
   }, [taskList]);
+
+  // Init the data had been sort
+  let dataSort = [];
+
+  if (sort === "") {
+    dataSort = taskList;
+  } else {
+    dataSort = taskList.filter((element) => element.status === sort);
+  }
 
   const changeItemStatus = (selectedItem, changedStatus) => {
     // Call fetch API PUT update
@@ -31,10 +42,7 @@ function TaskList(props) {
       },
       body: JSON.stringify({ ...selectedItem, status: changedStatus }),
     })
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
+      .then((response) => response.json())
       .then(() => {
         const updatedTaskList = taskList.map((item) => {
           if (item.id === selectedItem.currentID) {
@@ -48,11 +56,10 @@ function TaskList(props) {
       .catch((error) => {
         console.log(error);
       });
-    // changedSort(updatedTaskList);
   };
   return (
     <div className="task-list">
-      {display.map((item, index) => (
+      {dataSort.map((item, index) => (
         <Taskitem
           initialItem={item}
           key={item.id}

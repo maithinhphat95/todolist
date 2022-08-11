@@ -41,16 +41,16 @@ function Taskitem(props) {
       <select
         style={{ display: "block", backgroundColor: statusColor }}
         onChange={(e) => {
-          setStatus(ALL_STATUS[e.target.value]);
-          setColor(colorArr[e.target.value]);
+          setStatus(e.target.value);
+          setColor(colorArr[ALL_STATUS.indexOf(e.target.value)]);
           handleChangeStatus(initialItem, e.target.value);
         }}
-        value={[ALL_STATUS.indexOf(status)]}
+        value={status}
       >
         {ALL_STATUS.length &&
           ALL_STATUS.map((element, index) => {
             return (
-              <option key={index} value={index}>
+              <option key={index} value={element}>
                 {element}
               </option>
             );
