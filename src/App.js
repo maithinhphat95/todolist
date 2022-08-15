@@ -1,5 +1,4 @@
 import "./App.css";
-
 import Header from "./layout/Header/Header";
 import MainContent from "./layout/MainContent/MainContent";
 import SideBar from "./layout/SideBar/SideBar";
@@ -7,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import CreateTaskModal from "./components/CreateTaskModal/CreateTaskModal";
 
 function App() {
+
   return (
     <div className="container">
       <Header />

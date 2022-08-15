@@ -21,7 +21,7 @@ function TaskList(props) {
       .catch((error) => {
         console.log(error);
       });
-  }, [taskList]);
+  }, [sort]);
 
   // Init the data had been sort
   let dataSort = [];

@@ -39,21 +39,21 @@
       "id": 6,
       "title": "Task6",
       "creator": "Phat",
-      "status": "New",
+      "status": "Doing",
       "descript": "This is new task 6"
     },
     {
       "id": 7,
       "title": "Task7",
       "creator": "Phat",
-      "status": "New",
+      "status": "Doing",
       "descript": "This is new task 7"
     },
     {
       "id": 8,
       "title": "Task8",
       "creator": "Phat",
-      "status": "New",
+      "status": "Doing",
       "descript": "This is new task 8"
     },
     {
@@ -115,7 +115,7 @@
     {
       "title": "3",
       "creator": "1",
-      "status": "Done",
+      "status": "New",
       "descript": "1",
       "id": 17
     },
@@ -132,6 +132,13 @@
       "status": "New",
       "descript": "1",
       "id": 19
+    },
+    {
+      "title": "6",
+      "creator": "6",
+      "status": "Doing",
+      "descript": "6",
+      "id": 20
     }
   ]
 }
