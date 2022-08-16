@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Taskitem from "../TaskItem/Taskitem";
 import "./tasklist.css";
-import storage from "../Storage";
-import { ALL_STATUS, url } from "../../constant";
+import { httpRequest } from "../../constant";
 
 TaskList.propTypes = {};
 
@@ -12,12 +11,13 @@ function TaskList(props) {
   // Hook
   const [taskList, setTaskList] = useState([]);
 
-  // Get tasklist API
+  // Get tasklist API by use axios
   useEffect(() => {
-    // Fetch data from JSON server
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => setTaskList(data))
+    httpRequest
+      .get()
+      .then((response) => {
+        setTaskList(response.data);
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -33,17 +33,12 @@ function TaskList(props) {
   }
 
   const changeItemStatus = (selectedItem, changedStatus) => {
-    // Call fetch API PUT update
-    fetch(`${url}/${selectedItem.id}`, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json;charset=UTF-8",
-      },
-      body: JSON.stringify({ ...selectedItem, status: changedStatus }),
-    })
-      .then((response) => response.json())
-      .then(() => {
+    // Call put API by use axios library:
+    httpRequest
+      .put(`/${selectedItem.id}`, { ...selectedItem, status: changedStatus })
+      .then((response) => {
+        // console.log(response.data);
+        // Update the state tasklist of component: nếu không có thì chỉ UI thay đổi, còn state của component k thay đổi, chi khi mount lại component thì state mới thay đổi
         const updatedTaskList = taskList.map((item) => {
           if (item.id === selectedItem.currentID) {
             item.status = [changedStatus];
@@ -57,6 +52,7 @@ function TaskList(props) {
         console.log(error);
       });
   };
+
   return (
     <div className="task-list">
       {dataSort.map((item, index) => (

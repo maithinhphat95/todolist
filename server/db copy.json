@@ -4,7 +4,7 @@
       "id": 1,
       "title": "Task1",
       "creator": "Phat",
-      "status": "New",
+      "status": "Doing",
       "descript": "This is new task 1"
     },
     {
@@ -146,27 +146,6 @@
       "status": "New",
       "descript": "22",
       "id": 22
-    },
-    {
-      "title": "23",
-      "creator": "23",
-      "status": "New",
-      "descript": "23",
-      "id": 23
-    },
-    {
-      "title": "24",
-      "creator": "24",
-      "status": "Doing",
-      "descript": "24",
-      "id": 24
-    },
-    {
-      "title": "25",
-      "creator": "25",
-      "status": "New",
-      "descript": "25",
-      "id": 25
     }
   ]
 }

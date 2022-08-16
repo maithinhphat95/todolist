@@ -2,8 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./createTaskModal.scss";
 import { useState } from "react";
-import { url } from "../../constant";
+import { url, httpRequest } from "../../constant";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 // Function của modal
 
@@ -21,10 +22,8 @@ function CreateTaskModal(props) {
   // Init the variable
   const navigate = useNavigate();
 
-  // Fetch data
-  fetch(url)
-    .then((response) => response.json())
-    .then((value) => setData(value));
+  // Call GET API by axios:
+  httpRequest.get().then((response) => setData(response.data));
 
   // Function handle the value changed
   const handleChangeValue = (event) => {
@@ -50,15 +49,15 @@ function CreateTaskModal(props) {
 
     // Save the new task to data in the localstorage
     if (checkTitle && !checkInput) {
-      // Call post API
-      fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formValue),
-      })
-        .then((response) => response.json()) // get the Promise
-        .then((data) => console.log(data)) // Call the resolve of promise
-        .catch((error) => console.log(error));
+      // Call post API by use axios:
+      httpRequest
+        .post("", JSON.stringify(formValue))
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
       // Noti and navigate
       alert("Congratulation!!! A new task had been created");
