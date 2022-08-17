@@ -10,17 +10,18 @@ function Pagination(props) {
   let selected = currentPage;
 
   return (
-    <ul className="pagination">
-      <li
+    <div className="pagination">
+      <button
         className="pagination-item"
+        style={{ color: currentPage === 1 ? "gray" : "" }}
         onClick={() => {
           onPageChange("pre", selected);
         }}
       >
         <i className="fa-solid fa-angle-left"></i>
-      </li>
+      </button>
       {listPage.map((e) => (
-        <li
+        <button
           className="pagination-item"
           style={{
             backgroundColor: e === selected ? "var(--primary-color)" : null,
@@ -32,17 +33,18 @@ function Pagination(props) {
           }}
         >
           {e}
-        </li>
+        </button>
       ))}
-      <li
+      <button
         className="pagination-item"
+        style={{ color: currentPage === totalPage ? "gray" : "" }}
         onClick={() => {
           onPageChange("next", selected);
         }}
       >
         <i className="fa-solid fa-angle-right"></i>
-      </li>
-    </ul>
+      </button>
+    </div>
   );
 }
 
