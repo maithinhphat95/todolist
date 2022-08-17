@@ -1,24 +1,48 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./pagination.scss";
-import TaskList from "../TaskList/TaskList";
 Pagination.propTypes = {};
 
 function Pagination(props) {
-  const {} = props;
+  // Props
+  const { currentPage, totalPage, onPageChange } = props;
+  // Make the list page
+  const listPage = Array.from(Array(totalPage + 1).keys()).slice(1);
+  let selected = currentPage;
 
   return (
-    <div className="pagination">
-      <div className="pagination-item">
+    <ul className="pagination">
+      <li
+        className="pagination-item"
+        onClick={() => {
+          onPageChange("pre", selected);
+        }}
+      >
         <i className="fa-solid fa-angle-left"></i>
-      </div>
-      <div className="pagination-item">1</div>
-      <div className="pagination-item">2</div>
-      <div className="pagination-item">3</div>
-      <div className="pagination-item">
+      </li>
+      {listPage.map((e) => (
+        <li
+          className="pagination-item"
+          style={{
+            backgroundColor: e == selected ? "gray" : null,
+            color: e == selected ? "white" : null,
+          }}
+          key={e}
+          onClick={() => {
+            onPageChange(e, selected);
+          }}
+        >
+          {e}
+        </li>
+      ))}
+      <li
+        className="pagination-item"
+        onClick={() => {
+          onPageChange("next", selected);
+        }}
+      >
         <i className="fa-solid fa-angle-right"></i>
-      </div>
-    </div>
+      </li>
+    </ul>
   );
 }
 

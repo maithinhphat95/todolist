@@ -38,6 +38,7 @@ function Taskitem(props) {
           <p>{initialItem.descript}</p>
         </div>
       </div>
+
       <select
         style={{ display: "block", backgroundColor: statusColor }}
         onChange={(e) => {

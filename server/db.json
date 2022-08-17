@@ -11,14 +11,14 @@
       "id": 2,
       "title": "Task2",
       "creator": "Phat",
-      "status": "Doing",
+      "status": "New",
       "descript": "This is new task 2"
     },
     {
       "id": 3,
       "title": "Task3",
       "creator": "Phat",
-      "status": "Doing",
+      "status": "New",
       "descript": "This is new task 3"
     },
     {
