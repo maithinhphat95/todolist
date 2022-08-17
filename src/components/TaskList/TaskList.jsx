@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
 import Taskitem from "../TaskItem/Taskitem";
 import "./tasklist.css";
-import { httpRequest } from "../../constant";
 
 TaskList.propTypes = {};
 

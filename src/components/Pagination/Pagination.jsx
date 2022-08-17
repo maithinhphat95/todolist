@@ -23,8 +23,8 @@ function Pagination(props) {
         <li
           className="pagination-item"
           style={{
-            backgroundColor: e == selected ? "gray" : null,
-            color: e == selected ? "white" : null,
+            backgroundColor: e === selected ? "var(--primary-color)" : null,
+            color: e === selected ? "white" : null,
           }}
           key={e}
           onClick={() => {

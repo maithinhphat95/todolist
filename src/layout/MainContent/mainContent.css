@@ -7,3 +7,13 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: calc(50% + 100px);
+  transform: translateX(-50%) translateY(-50%);
+}

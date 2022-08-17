@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import TaskList from "../../components/TaskList/TaskList";
 import Pagination from "../../components/Pagination/Pagination";
 import "./mainContent.css";
-import { url, httpRequest } from "../../constant";
+import { httpRequest } from "../../constant";
 
 MainContent.propTypes = {};
 
 function MainContent(props) {
   // Props
-  const { sort } = props;
-
+  const { sort, search } = props;
   // Hook
   const [taskList, setTaskList] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   // Init variables
   let dataSort = []; //The data after sort
@@ -26,6 +26,7 @@ function MainContent(props) {
       .then((response) => {
         setTaskList(response.data);
         setCurrentPage(1);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -33,12 +34,15 @@ function MainContent(props) {
   }, [sort]);
 
   // Sort the data
-  if (sort == "") {
-    dataSort = [...taskList];
+  if (sort === "") {
+    if (search === "") {
+      dataSort = [...taskList];
+    } else {
+      dataSort = taskList.filter((item) => item.title.includes(search));
+    }
   } else {
     dataSort = taskList.filter((element) => element.status === sort);
   }
-
   // Limit the page
   pageShow = dataSort.slice((currentPage - 1) * limited, currentPage * limited);
   totalPage = dataSort ? Math.ceil(dataSort.length / limited) : 1;
@@ -46,19 +50,19 @@ function MainContent(props) {
   // Handle the change page of pagination
   const handlePageChange = (goto, current) => {
     // re-render the page base on pagination
-    if (goto == "pre") {
+    if (goto === "pre") {
       if (current > 1) {
         setCurrentPage(current - 1);
       }
-    } else if (goto == "next") {
+    } else if (goto === "next") {
       if (current < totalPage) {
         setCurrentPage(current + 1);
       }
-    } else if (goto != current) {
+    } else if (goto !== current) {
       setCurrentPage(goto);
     }
   };
-  // console.log(currentPage);
+
   const handleChangeStatus = (selectedItem, changedStatus) => {
     // Call put API by use axios library:
     httpRequest
@@ -83,12 +87,20 @@ function MainContent(props) {
   // Render
   return (
     <div className="main-content">
+      {loading && (
+        <div className=" loading">
+          <p> Data is loading...</p>
+          <img src="loading_icon.gif" style={{ height: 200 }} alt=""></img>
+        </div>
+      )}
       <TaskList display={pageShow} handleChangeStatus={handleChangeStatus} />
-      <Pagination
-        currentPage={currentPage}
-        totalPage={totalPage}
-        onPageChange={handlePageChange}
-      />
+      {totalPage > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPage={totalPage}
+          onPageChange={handlePageChange}
+        />
+      )}
     </div>
   );
 }

@@ -4,7 +4,6 @@ import axios from "axios";
 export const url = "http://localhost:3005/data";
 export const httpRequest = axios.create({
   baseURL: url,
-  timeout: 1500,
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json;charset=UTF-8",

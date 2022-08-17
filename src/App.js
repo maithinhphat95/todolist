@@ -4,25 +4,40 @@ import MainContent from "./layout/MainContent/MainContent";
 import SideBar from "./layout/SideBar/SideBar";
 import { Route, Routes } from "react-router-dom";
 import CreateTaskModal from "./components/CreateTaskModal/CreateTaskModal";
+import { useState } from "react";
 
 function App() {
-
+  const [searchText, setSearchText] = useState("");
+  const handleSearch = (string) => {
+    setSearchText(string);
+  };
   return (
     <div className="container">
-      <Header />
+      <Header handleSearch={handleSearch} />
       <div>
         <SideBar />
+
         <main className="main-content">
           <Routes>
-            <Route path="/todolist/" element={<MainContent sort="" />} />
-            <Route path="/todolist/new" element={<MainContent sort="New" />} />
+            <Route
+              path="/todolist/search"
+              element={<MainContent sort="" search={searchText.trim()} />}
+            />
+            <Route
+              path="/todolist/"
+              element={<MainContent sort="" search="" />}
+            />
+            <Route
+              path="/todolist/new"
+              element={<MainContent sort="New" search="" />}
+            />
             <Route
               path="/todolist/doing"
-              element={<MainContent sort="Doing" />}
+              element={<MainContent sort="Doing" search="" />}
             />
             <Route
               path="/todolist/done"
-              element={<MainContent sort="Done" />}
+              element={<MainContent sort="Done" search="" />}
             />
             <Route path="/todolist/create" element={<CreateTaskModal />} />
           </Routes>

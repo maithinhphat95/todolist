@@ -1,7 +1,6 @@
 .create-btn {
   height: 100%;
   padding: 10px;
-  /* background-color: #3a57a2; */
   background-color: var(--primary-color);
   border: 2px solid white;
   color: white;

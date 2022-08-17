@@ -1,12 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./createTaskModal.scss";
 import { useState } from "react";
-import { url, httpRequest } from "../../constant";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-
-// Function của modal
+import { httpRequest } from "../../constant";
+import { Link, useNavigate } from "react-router-dom";
 
 function CreateTaskModal(props) {
   // State Hook
@@ -16,8 +12,8 @@ function CreateTaskModal(props) {
     status: "New",
     descript: "",
   });
-
-  const [data, setData] = useState([]); // Init data of tasklist
+  // Init data of tasklist
+  const [data, setData] = useState([]);
 
   // Init the variable
   const navigate = useNavigate();
@@ -39,13 +35,13 @@ function CreateTaskModal(props) {
 
     // Validate data and save data
     let checkInput =
-      formValue.title == "" ||
-      formValue.creator == "" ||
-      formValue.status == "" ||
-      formValue.descript == "";
+      formValue.title === "" ||
+      formValue.creator === "" ||
+      formValue.status === "" ||
+      formValue.descript === "";
 
     // Validate the title is duplicated
-    let checkTitle = data.every((e) => e.title != formValue.title);
+    let checkTitle = data.every((e) => e.title !== formValue.title);
 
     // Save the new task to data in the localstorage
     if (checkTitle && !checkInput) {
